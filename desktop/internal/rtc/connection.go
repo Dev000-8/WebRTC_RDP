@@ -10,10 +10,12 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"runtime"
 	"strconv"
 	"strings"
 	"time"
 
+	"webrtc-rdp/internal/config"
 	"webrtc-rdp/internal/encoders"
 	"webrtc-rdp/internal/rdisplay"
 
@@ -126,13 +128,13 @@ func (p *RemoteScreenPeerConn) ProcessOffer(strOffer string) (string, error) {
 			/*{
 				URLs: []string{"stun:openrelay.metered.ca:80"},
 			},*/
-			/*{
+			{
 				URLs:           []string{"turn:openrelay.metered.ca:80"},
 				Username:       "openrelayproject",
 				Credential:     "openrelayproject",
 				CredentialType: webrtc.ICECredentialTypePassword,
 			},
-			{
+			/*{
 				URLs:           []string{"turn:openrelay.metered.ca:443"},
 				Username:       "openrelayproject",
 				Credential:     "openrelayproject",
@@ -472,17 +474,41 @@ func (p *RemoteScreenPeerConn) ProcessOffer(strOffer string) (string, error) {
 					ctrl := m["ctrl"].(bool)
 					shift := m["shift"].(bool)
 
-					kb.SetKeys(keybd_event.VK_ENTER)
+					if m["keyCode"].(float64) == 91 {
+						robotgo.KeyTap("lcmd")
+					} else if m["keyCode"].(float64) == 93 {
+						if runtime.GOOS == "windows" {
 
-					if ctrl {
-						kb.HasCTRL(true)
-					} else if shift {
-						kb.HasSHIFT(true)
-					}
+							kb.HasSHIFT(true)
+							kb.SetKeys(keybd_event.VK_F10)
+							err = kb.Launching()
+							if err != nil {
+								fmt.Println(err)
+							}
+							kb.HasSHIFT(false)
+						} else {
+							robotgo.KeyTap("rcmd")
+							//kb.SetKeys(config.JSKeyMap[int(m["keyCode"].(float64))])
+						}
+					} else {
+						kb.SetKeys(config.JSKeyMap[int(m["keyCode"].(float64))])
 
-					err = kb.Launching()
-					if err != nil {
-						fmt.Println(err)
+						if ctrl {
+							kb.HasCTRL(true)
+						} else {
+							kb.HasCTRL(false)
+						}
+
+						if shift {
+							kb.HasSHIFT(true)
+						} else {
+							kb.HasSHIFT(false)
+						}
+
+						err = kb.Launching()
+						if err != nil {
+							fmt.Println(err)
+						}
 					}
 
 					//robotgo.KeyTap(config.RobotGoJSKeyMap[m["keyCode"].(float64)])

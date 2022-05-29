@@ -61,7 +61,7 @@ ssh -L YOUR_LOCAL_PORT:localhost:xxxx
 
 ### Gateway
 
-Gateway is websocket server which contains signaling function and fontend webpage allows you to control remote computer.
+Gateway is a websocket server which contains signaling function and fontend webpage allows you to control remote computer.
 
 Server address and port is hard coded on the source code.
 
