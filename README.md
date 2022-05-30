@@ -62,4 +62,4 @@ Server address and port is hard coded on the source code.
 
 ### Note
 I am tried to use cross-platform libraries in this project, but didn't test on linux and macOS. only tested on windows
-<hr>
+
