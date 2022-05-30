@@ -48,16 +48,7 @@ go run -tags "h264enc" cmd/agent.go
 <hr>
 
 ### Building for production
-Build the _deployment_ package by runnning `make`. This should create a tar file with the 
-binary and web directory, by default only support for h264 is included, if you want to use VP8 run `make encoders=vp8`, if you want both then `make encoders=vp8,h264`.
-
-Copy the archive to a remote server, decompress it and run `./agent`. The `agent` application assumes the web dir. is in the same directory. 
-
-WebRTC requires a _secure_ domain to work, the recommended approach towards this is to forward the agent port thru SSH tunneling:
-
-```bash
-ssh -L YOUR_LOCAL_PORT:localhost:xxxx 
-```
+Build the _deployment_ package by runnning `make`. This should create service.exe and agent.exe, by default only support for vp8 is included, if you want to use H264 run `make encoders=h264`, if you want both then `make encoders=vp8,h264`.
 
 ### Gateway
 
@@ -68,4 +59,7 @@ Server address and port is hard coded on the source code.
 ```
     npm start 
 ```
+
+### Gateway
+I am tried to use cross-platform libraries in this project, but didn't test on linux and macOS. only tested on windows
 <hr>
