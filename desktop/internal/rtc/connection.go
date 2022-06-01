@@ -126,26 +126,11 @@ func (p *RemoteScreenPeerConn) ProcessOffer(strOffer string) (string, error) {
 				URLs: []string{p.stunServer},
 			},
 			/*{
-				URLs: []string{"stun:openrelay.metered.ca:80"},
-			},*/
-			{
-				URLs:           []string{"turn:openrelay.metered.ca:80"},
-				Username:       "openrelayproject",
-				Credential:     "openrelayproject",
+				URLs:           []string{"turn:ntk-turn-1.xirsys.com:80?transport=udp"},
+				Username:       "",
+				Credential:     "",
 				CredentialType: webrtc.ICECredentialTypePassword,
-			},
-			/*{
-				URLs:           []string{"turn:openrelay.metered.ca:443"},
-				Username:       "openrelayproject",
-				Credential:     "openrelayproject",
-				CredentialType: webrtc.ICECredentialTypePassword,
-			},*/
-			/*{
-				URLs:           []string{"turn:openrelay.metered.ca:443?transport=tcp"},
-				Username:       "openrelayproject",
-				Credential:     "openrelayproject",
-				CredentialType: webrtc.ICECredentialTypePassword,
-			},*/
+			}*/
 		},
 		SDPSemantics: webrtc.SDPSemanticsUnifiedPlan,
 	}

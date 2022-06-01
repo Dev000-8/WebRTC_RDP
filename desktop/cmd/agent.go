@@ -95,7 +95,7 @@ func main() {
 	errors := make(chan error, 3)
 
 	for {
-		url := "192.168.1.5:19890"
+		url := "127.0.0.1:19890"
 		dialer := *websocket.DefaultDialer
 		dialer.TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 		ws, _, err := dialer.Dial("wss://"+url, nil)

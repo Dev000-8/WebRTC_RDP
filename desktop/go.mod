@@ -9,8 +9,10 @@ require (
 	github.com/go-vgo/robotgo v0.91.0
 	github.com/google/uuid v1.1.2
 	github.com/gorilla/websocket v1.5.0
+	github.com/kardianos/service v1.2.1
 	github.com/kbinani/screenshot v0.0.0-20190612115439-c3c7d93696f3
 	github.com/micmonay/keybd_event v1.1.1
+	github.com/mitchellh/go-ps v1.0.0
 	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646
 	github.com/pion/datachannel v1.4.21 // indirect
 	github.com/pion/mdns v0.0.4 // indirect
