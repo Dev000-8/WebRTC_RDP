@@ -1,0 +1,14 @@
+{
+  "name": "websocket-signaling",
+  "version": "0.96.0",
+  "description": "A websocket signaling server for use with WebRTC Network and Video Chat assets for Unity.",
+  "main": "server.js",
+  "author": {
+    "name": "Phylliida"
+  },
+  "dependencies": {
+    "express": "^4.18.1",
+    "requirejs": "^2.2.0",
+    "ws": "^1.1.0"
+  }
+}

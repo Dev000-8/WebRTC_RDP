@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <script src="/static/js/jquery3.6.min.js" ></script>
+
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/static/css/bootstrap-icons.css" />
+    <script src="/static/js/bootstrap.min.js" ></script>
+    
+    <script src="/static/js/adapter.min.js" integrity="sha256-UH0Npcih7yj1s23pQK0UCrCSxx7AkT91CCMsUGnZ9Ew=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/static/css/style.css" />
+    
+    <style>
+      .canvas {
+        position: absolute;
+        z-index: 10;
+        /* background-color: rgba(255, 0, 0, 0.5); */
+      }
+    </style>
+    
+    <style>
+
+    .btn-file {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-file input[type=file] {
+      position: absolute;
+      top: 0;
+      right: 0;
+      min-width: 100%;
+      min-height: 100%;
+      font-size: 100px;
+      text-align: right;
+      filter: alpha(opacity=0);
+      opacity: 0;
+      background: red;
+      cursor: inherit;
+      display: block;
+    }
+
+    </style>
+    <title>Remote Desktop</title>
+  </head>
+  <body>
+    
+    <div id="app">
+      <div id="controls">
+          <div id="error"></div>
+
+
+          <button id="explorer-btn" class="btn btn-secondary" style="margin-left: 10px;margin-right: 10px;display: '';">Explorer</button>
+
+          <span class="input-group-btn upload-btn" style="margin-left: 10px;margin-right: 10px;display:none;">
+            <span class="btn btn-secondary btn-file" disabled>
+                <span id="upload-label">Upload</span> <input type="file" single id="file-upload">
+            </span>
+          </span>
+
+          <select id="color-mode" class="form-select" onchange="modeChange()" style="margin-left: 10px;margin-right: 10px;width: 150px;display: none;">
+            <option selected value="0">Bright +0</option>
+            <option value="1">Bright 90% </option>
+            <option value="2">Bright 70%</option>
+            <option value="3">Bright 50%</option>
+          </select>
+
+          <select class="form-select" id="peer-list" onchange="peerChange()" style="width: 150px;margin-left: 10px;margin-right: 10px;">
+            <option selected value="">No Peer</option>
+          </select>
+
+          <button id="start-stop" class="btn btn-secondary" style="margin-left: 10px;margin-right: 10px;">Connect</button>
+
+      </div>
+      <div id="instructions">Press Connect to start session</div>
+      <video id="remote-video" autoplay muted playsinline></video>
+      <canvas id="remote-canvas" class="canvas"></canvas>
+    </div>
+
+    <div class="modal fade" id="explorer" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" >Explorer</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="col-12">
+              <ul class="list-group" style="cursor: pointer;">
+                <li class="list-group-item"><i class="bi-hdd-fill" style="padding-right:10px"></i> /</li>
+              </ul>
+            </div>
+            
+          </div>
+          <div class="modal-footer">
+            <div class="col-12" >
+              <span class="info-bar"></span><br>
+              <span class="status-bar"></span>
+            </div>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <ul class='custom-menu'>
+    </ul>
+
+    <script src="/static/js/app.js"></script>
+  </body>
+</html>

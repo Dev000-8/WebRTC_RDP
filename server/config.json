@@ -1,0 +1,20 @@
+{
+    "httpConfig":
+    {
+        "port": 19880
+    },
+    "httpsConfig":
+    {
+        "port": 19890,
+        "ssl_key_file": "ssl.key",
+        "ssl_cert_file": "ssl.cert"
+    },
+    "maxPayload": 
+        1048576,
+    "apps": [
+        {
+            "name": "root",
+            "path": "/"
+        }
+    ]
+}
